@@ -64,7 +64,7 @@ initErrorCatchNotifier([myErrorCallback], true, true); // third true turns on er
 
 Call the failback in the error callback given to init
 ```
-const myErrorCallback = function myErrorCallback(error, failback) { // first argument must be named error
+const myErrorCallback = function myErrorCallback(error, failback) {
     /* do something async with the error */
 
     // success e.g. inside .then()
@@ -88,8 +88,11 @@ Pull requests should have passing unit tests.
 ## Maintenance Commands
 
 `npm run build` - lints, unit tests, and compiles
+
 `npm run compile` - compiles index and main source into dist folder
+
 `npm run lint` - runs eslint on source and test files
+
 `npm run test` - runs lint and unit tests
 
 ## License
