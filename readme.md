@@ -35,6 +35,7 @@ Any errors that occur in your wrapped functions will be caught and passed to you
 
 ## Details
 1. Initialization
+
 `initErrorCatchNotifier(errorSubscriberFunctions = [], enabled = false, loggingEnabled = false)`
 
 `errorSubscriberFunctions` - array of callbacks- each callback must have `error` as its first argument
