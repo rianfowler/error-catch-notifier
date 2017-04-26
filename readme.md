@@ -39,7 +39,9 @@ Any errors that occur in your wrapped functions will be caught and passed to you
 `initErrorCatchNotifier(errorSubscriberFunctions = [], enabled = false, loggingEnabled = false)`
 
 `errorSubscriberFunctions` - array of callbacks- each callback must have `error` as its first argument
+
 `enabled` - error catching is off by default. When true, errors are caught, sent to error subscribers, and swallowed. When false, errors pass through normal call chain.
+
 `loggingEnabled` - error logging is off by default. When on, module error messages are logged to console. This does not control error logging for wrapped functions- errors caught by `wrap` are not console logged by this module when `enabled` is true.
 
 2. Controlling Logging and Error Catching
