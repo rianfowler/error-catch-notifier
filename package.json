@@ -1,6 +1,6 @@
 {
   "name": "error-catch-notifier",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "Helpers for catching and reporting errors",
   "main": "dist/index.js",
   "scripts": {
@@ -25,11 +25,11 @@
     "sinon": "^2.1.0",
     "sinon-chai": "^2.9.0"
   },
-  "repository" : {
-     "type" : "git",
-     "url" : "https://github.com/rianfowler/error-catch-notifier"
- },
- "files": [
-     "dist"
- ]
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/rianfowler/error-catch-notifier"
+  },
+  "files": [
+    "dist"
+  ]
 }
