@@ -28,5 +28,8 @@
   "repository" : {
      "type" : "git",
      "url" : "https://github.com/rianfowler/error-catch-notifier"
-    }
+ },
+ "files": [
+     "dist"
+ ]
 }
