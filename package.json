@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "npm run lint && npm run test &&  npm run compile",
-    "compile": "babel src --out-dir dist", 
+    "compile": "babel src --out-dir dist",
     "lint": "eslint src/error-catch-notifier.js && eslint test/error-catch-notifier-test.js && eslint src/index.js",
     "test": "npm run lint && mocha --compilers js:babel-core/register"
   },
@@ -24,5 +24,9 @@
     "proxyquire": "^1.7.11",
     "sinon": "^2.1.0",
     "sinon-chai": "^2.9.0"
-  }
+  },
+  "repository" : {
+     "type" : "git",
+     "url" : "https://github.com/rianfowler/error-catch-notifier"
+    }
 }
