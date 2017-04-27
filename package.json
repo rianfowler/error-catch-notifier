@@ -5,7 +5,7 @@
   "main": "dist/index.js",
   "scripts": {
     "build": "npm run lint && npm run test &&  npm run compile",
-    "compile": "babel src/error-catch-notifier.js --out-file dist/error-catch-notifier.js && babel src/index.js --out-file dist/index.js",
+    "compile": "babel src --out-dir dist", 
     "lint": "eslint src/error-catch-notifier.js && eslint test/error-catch-notifier-test.js && eslint src/index.js",
     "test": "npm run lint && mocha --compilers js:babel-core/register"
   },
