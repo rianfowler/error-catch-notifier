@@ -1,0 +1,34 @@
+{
+    "env": {
+        "browser": true,
+        "node": true,
+        "mocha": true,
+        "es6": true
+    },
+    "extends": "airbnb-base",
+    "plugins": [
+        "import"
+    ],
+    "rules": {
+      "arrow-body-style": 0, // don't require braces in arrow function bodies
+      "arrow-parens": ["error", "as-needed", { "requireForBlockBody": false }], // no parens for arrow functions with arity 1
+      "comma-dangle": ["error", "never"], // no comma dangling please
+      "import/extensions": 0, // webpack handles this for us
+      "import/no-extraneous-dependencies": 0, // errors on webpack resolve aliases for our own app files
+      "import/no-unresolved": 0, // this rule doesn't play nice with webpack
+      "indent": [0, 4, {"SwitchCase": 1}], // TODO make this more strict
+      "jsx-a11y/no-static-element-interactions": 0, // TODO turn this back on someday when we don't have onClick divs, but it stops tests right now
+      "max-len": 0, // sorry airbnb, we need this. Allow long lines sometimes
+      "new-cap": 0, // TODO re-evaluate for HOC, should we disable file-by-file?
+      "newline-before-return": 2, // always have a newline above return statement http://eslint.org/docs/rules/newline-before-return
+      "no-case-declarations": 0, // for defining return consts in case statements
+      "no-console": 0, // keep console logs
+      "no-debugger": 0, // keep debugger statements
+      "no-prototype-builtins": 0, // we use Object.prototype methods, the alternate syntax is messy, {}.hasOwnProperty.call()
+      "no-underscore-dangle": 0, // for "private" methods
+      "no-unused-expressions": 0, // for chai expect assertions that are not function calls (.to.be.true;)
+      "no-unused-vars": ["error", { "varsIgnorePattern": "colors" }], // for patching String.prototype in scripts
+      "prefer-arrow-callback": 0, // Raygun error reporting uses function name in reporting; SFC cannot be anonymous
+      "import/prefer-default-export": 0 // We don't actually prefer default exports
+    }
+}
