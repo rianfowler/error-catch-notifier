@@ -15,6 +15,8 @@ let _isLoggingEnabled = false;
  * The first argument of an errorSubscriber must be named error
  * @typedef {function} ErrorSubscriber
  * @param {error} error - error object
+ * @param {object} [options] - options passed to subscriber from wrap or notifiySubscribers
+ * @param {function} [failback] - failback for logging async errors / success
  */
 
 /**
@@ -178,12 +180,13 @@ export function makeErrorSubscriberFailback(errorSubscriberName) {
 /**
  * Passes an error to each callback in _errorSubscribers
  * @param {error} error
+ * @param {object} options
  */
-export function notifyErrorSubscribers(error) {
+export function notifyErrorSubscribers(error, options) {
     for (let i = 0; i < _errorSubscribers.length; i += 1) {
         const errorSubscriber = _errorSubscribers[i];
         try {
-            errorSubscriber(error, makeErrorSubscriberFailback(errorSubscriber.name));
+            errorSubscriber(error, options, makeErrorSubscriberFailback(errorSubscriber.name));
         } catch (catchError) {
             if (!_isLoggingEnabled) {
                 return;
@@ -199,8 +202,9 @@ export function notifyErrorSubscribers(error) {
  * Wrap a target function in a try catch.
  * Errors caught by this block will be passed to _errorSubscribers
  * @param {function} targetFunction - function definition to be wrapped in try catch
+ * @param {object} options - options passed to notifiyErrorSubscribers
  */
-export function wrap(targetFunction) {
+export function wrap(targetFunction, options) {
     return function wrappedFunction(...args) {
         if (!_isEnabled) {
             return targetFunction.apply(this, args);
@@ -211,7 +215,7 @@ export function wrap(targetFunction) {
         try {
             value = targetFunction.apply(this, args);
         } catch (error) {
-            notifyErrorSubscribers(error);
+            notifyErrorSubscribers(error, options);
         }
 
         return value;
