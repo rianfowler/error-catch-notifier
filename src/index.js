@@ -4,5 +4,6 @@ export {
     enableErrorCatching,
     enableLogging,
     initErrorCatchNotifier,
+    notifyErrorSubscribers,
     wrap
 } from './error-catch-notifier';
