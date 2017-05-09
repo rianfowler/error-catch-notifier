@@ -428,16 +428,19 @@ describe('error-catch-notifier', function () {
 
             const testError = new Error('testError');
 
-            const errorFunction = function () {
+            const errorFunction = function testFunction() {
                 throw testError;
             };
 
             initErrorCatchNotifier(errorSubscribers, true, false);
 
-            wrap(errorFunction)();
+            const wrapped = wrap(errorFunction);
+            wrapped();
 
             expect(resultError)
                 .to.equal(testError);
+            expect(wrapped.displayName)
+                .to.equal('errorCatchNotifierWrap(testFunction)');
         });
     });
 });
