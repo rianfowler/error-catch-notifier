@@ -205,7 +205,7 @@ export function notifyErrorSubscribers(error, options) {
  * @param {object} options - options passed to notifiyErrorSubscribers
  */
 export function wrap(targetFunction, options) {
-    return function wrappedFunction(...args) {
+    function wrappedFunction(...args) {
         if (!_isEnabled) {
             return targetFunction.apply(this, args);
         }
@@ -219,7 +219,14 @@ export function wrap(targetFunction, options) {
         }
 
         return value;
-    };
+    }
+
+    // Name in the format of 'errorCatchNotifierWrap(MyComponentName)
+    // Note that this is only intended to show up in React PropType errors,
+    // stack traces won't read this value.
+    wrappedFunction.displayName = `errorCatchNotifierWrap(${targetFunction.name})`;
+
+    return wrappedFunction;
 }
 
 /**
